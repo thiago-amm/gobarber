@@ -166,3 +166,7 @@
 
 #### 12. Instalar módulo para suporte ao JWT
     yarn add jsonwebtoken
+
+#### 13. Instalar módulo para suporte ao upload de arquivos
+    yarn add multer
+

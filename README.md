@@ -169,4 +169,7 @@
 
 #### 13. Instalar módulo para suporte ao upload de arquivos
     yarn add multer
+##### 13.1 Criar repositório para os arquivos enviados
+    mkdir -p tmp/uploads
+
 

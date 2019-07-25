@@ -169,11 +169,15 @@
 
 #### 13. Instalar módulo para suporte ao upload de arquivos
     yarn add multer
-##### 13.1 Criar repositório para os arquivos enviados
+##### 13.1 Criar repositório para os arquivos de upload
     mkdir -p tmp/uploads
-##### 13.2 Criar tabela para guardar referências dos arquivos enviados
+##### 13.2 Criar tabela para guardar referências dos arquivos de upload
     yarn sequelize migration:create --name=create-files
     yarn sequelize db:migrate
+##### 13.3 Adicionar coluna que associa o arquivo de upload ao usuário do app
+    yarn sequelize migration:create --name=add-avatar-field-to-users
+    yarn sequelize db:migrate
+
 
 
 

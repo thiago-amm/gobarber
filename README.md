@@ -171,5 +171,9 @@
     yarn add multer
 ##### 13.1 Criar repositório para os arquivos enviados
     mkdir -p tmp/uploads
+##### 13.2 Criar tabela para guardar referências dos arquivos enviados
+    yarn sequelize migration:create --name=create-files
+    yarn sequelize db:migrate
+
 
 

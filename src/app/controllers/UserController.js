@@ -3,43 +3,44 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
-  async store(req, res) {
+  async store(request, response) {
     const schema = Yup.object().shape({
-      name: Yup.string().required(),
+      name: Yup.string().requestuired(),
       email: Yup.string()
         .email()
-        .required(),
+        .requestuired(),
       password: Yup.string()
-        .required()
+        .requestuired()
         .min(6),
     });
 
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Dados inválidos!' });
+    if (!(await schema.isValid(request.body))) {
+      return response.status(400).json({ error: 'Dados inválidos!' });
     }
 
     const userExists = await User.findOne({
       where: {
-        email: req.body.email,
+        email: request.body.email,
       },
     });
 
     if (userExists) {
-      return res
+      return response
         .status(400)
         .json({ error: 'Já existe um usuário cadastrado com esse e-mail!' });
     }
 
-    const { id, name, email } = await User.create(req.body);
+    const { id, name, email, provider } = await User.create(request.body);
 
-    return res.json({
+    return response.json({
       id,
       name,
       email,
+      provider,
     });
   }
 
-  async update(req, res) {
+  async update(request, response) {
     const schema = Yup.object().shape({
       name: Yup.string(),
       email: Yup.string().email(),
@@ -54,25 +55,25 @@ class UserController {
       ),
     });
 
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Dados inválidos!' });
+    if (!(await schema.isValid(request.body))) {
+      return response.status(400).json({ error: 'Dados inválidos!' });
     }
 
-    const { email, oldPassword } = req.body;
-    const user = await User.findByPk(req.userId);
+    const { email, oldPassword } = request.body;
+    const user = await User.findByPk(request.userId);
     if (email !== user.email) {
       const userExists = await User.findOne({ where: { email } });
       if (userExists) {
-        return res.status(400).json({
+        return response.status(400).json({
           error: 'Já existe usuário cadastrado com o e-mail informado!',
         });
       }
     }
     if (oldPassword && !(await user.checkPassword(oldPassword))) {
-      return res.status(401).json({ error: 'Senha incorreta!' });
+      return response.status(401).json({ error: 'Senha incorreta!' });
     }
-    const { id, name } = await user.update(req.body);
-    return res.json({ id, name, email });
+    const { id, name, provider } = await user.update(request.body);
+    return response.json({ id, name, email, provider });
   }
 }
 

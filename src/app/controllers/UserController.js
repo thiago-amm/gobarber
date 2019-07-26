@@ -5,12 +5,12 @@ import User from '../models/User';
 class UserController {
   async store(request, response) {
     const schema = Yup.object().shape({
-      name: Yup.string().requestuired(),
+      name: Yup.string().required(),
       email: Yup.string()
         .email()
-        .requestuired(),
+        .required(),
       password: Yup.string()
-        .requestuired()
+        .required()
         .min(6),
     });
 

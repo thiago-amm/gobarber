@@ -182,11 +182,13 @@
 #### 14.2 Criar controlador
 #### 14.2 Criar campo virtual para armazenar a url do avatar do usuário.
 #### 14.5 Servir arquivos estáticos com Express
-#### 15. Criar o model e as migrations para agendamentos.
+#### 15. Criar estrutura básica para agendamento de prestação de serviço.
 ##### 15.1 Criar migration
     yarn sequelize migration:create --name=create-appointments
 ##### 15.2 Aplicar migration no banco de dados
     yarn sequelize db:migrate
+##### 15.3 Instalar biblioteca date-fns para validar datas de agendamentos.
+    yarn add date-fns@next
 
 
 

@@ -177,6 +177,17 @@
 ##### 13.3 Adicionar coluna que associa o arquivo de upload ao usuário do app
     yarn sequelize migration:create --name=add-avatar-field-to-users
     yarn sequelize db:migrate
+#### 14. Criar rota para listar usuários prestadores de serviço (providers)
+#### 14.1 Criar rota
+#### 14.2 Criar controlador
+#### 14.2 Criar campo virtual para armazenar a url do avatar do usuário.
+#### 14.5 Servir arquivos estáticos com Express
+#### 15. Criar o model e as migrations para agendamentos.
+##### 15.1 Criar migration
+    yarn sequelize migration:create --name=create-appointments
+##### 15.2 Aplicar migration no banco de dados
+    yarn sequelize db:migrate
+
 
 
 

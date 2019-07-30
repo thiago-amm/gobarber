@@ -190,6 +190,11 @@
 ##### 15.3 Instalar biblioteca date-fns para validar datas de agendamentos.
     yarn add date-fns@next
 
+#### 16. Configurando MongoDB
+##### 16.1 Criar container no Docker para o MongoDB
+    docker run --name mongobarber -p 27017:27017 -d -t mongo
+##### 16.2 Instalar o Mongoose ORM
+    yarn add mongoose
 
 
 

@@ -195,6 +195,10 @@
     docker run --name mongobarber -p 27017:27017 -d -t mongo
 ##### 16.2 Instalar o Mongoose ORM
     yarn add mongoose
+#### 17. Configurando Nodemailer
+##### 17.1 Instalação Nodemailer
+    yarn add nodemailer
+
 
 
 

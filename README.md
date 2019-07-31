@@ -198,6 +198,10 @@
 #### 17. Configurando Nodemailer
 ##### 17.1 Instalação Nodemailer
     yarn add nodemailer
+#### 18. Configurando templates de e-mail
+##### 18.1 Instalação de template engine
+    yarn add express-handlebars nodemailer-express-handlebars
+
 
 
 

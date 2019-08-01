@@ -14,6 +14,7 @@ class Mail {
       secure,
       auth: auth.user ? auth : null,
     });
+    this.configureTemplates();
   }
 
   configureTemplates() {

@@ -201,6 +201,12 @@
 #### 18. Configurando templates de e-mail
 ##### 18.1 Instalação de template engine
     yarn add express-handlebars nodemailer-express-handlebars
+#### 19. Configurando fila com Redis
+##### 19.1 Criar container do Redis no Docker
+    docker run --name redisbarber -p 6379:6379 -d -t redis:alpine
+##### 19.2 Instalar bee-queue
+    yarn add bee-queue
+
 
 
 

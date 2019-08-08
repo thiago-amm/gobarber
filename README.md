@@ -213,6 +213,9 @@
     yarn add express-async-errors
 ##### 20.3 Instalação do módulo Youch para melhorar a formatação das mensagens de erro
     yarn add youch
+#### 21. Variáveis de Ambiente
+##### 21.1 Instalar módulo DotENV para manipular variáveis de ambiente
+    yarn add dotenv
 
 
 

@@ -53,10 +53,26 @@ class AppointmentController {
 
     const { provider_id, date } = request.body;
 
-    // Verifica se o provider_id é de um usuário prestador de serviço (provider)
     const checkIsProvider = await User.findOne({
       where: { id: provider_id, provider: true },
     });
+
+    // Verifica se o provider_id é de um usuário prestador de serviço (provider)
+    if (!checkIsProvider) {
+      return response.status(401).json({
+        error: 'Só se pode agendar com usuários prestadores de serviço!',
+      });
+    }
+
+    // Verifica se o usuário não está agendando a prestação de um serviço
+    // com ele mesmo.
+    if (request.userId === provider_id) {
+      return response.status(401).json({
+        error:
+          'Não é possível para o usuário agendar a prestação de ' +
+          'um serviço com ele mesmo!',
+      });
+    }
 
     const hourStart = startOfHour(parseISO(date));
 
@@ -80,12 +96,6 @@ class AppointmentController {
       return response
         .status(400)
         .json({ error: 'Data indisponível para agendamento!' });
-    }
-
-    if (!checkIsProvider) {
-      return response.status(401).json({
-        error: 'Só se pode agendar com usuários prestadores de serviço!',
-      });
     }
 
     const appointment = await Appointment.create({

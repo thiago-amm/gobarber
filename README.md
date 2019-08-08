@@ -206,6 +206,14 @@
     docker run --name redisbarber -p 6379:6379 -d -t redis:alpine
 ##### 19.2 Instalar bee-queue
     yarn add bee-queue
+#### 20. Tratamento de exceções
+##### 20.1 Instalar o módulo de integração com o Sentry
+    yarn add @sentry/node@5.5.0
+##### 20.2 Capturar erros no Express ao usar async
+    yarn add express-async-errors
+##### 20.3 Instalação do módulo Youch para melhorar a formatação das mensagens de erro
+    yarn add youch
+
 
 
 
